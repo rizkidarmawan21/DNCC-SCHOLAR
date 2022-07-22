@@ -24,3 +24,9 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 ## HOW TO RUN ?
 
 1. Install dependency php  ```composer install```
+2. Install dependency node js ``` npm install ``` or ```yarn install ``` if you use yarn
+3. Setting database in ENV
+4. Run server-side in terminal ```php artisan serve```
+5. Run client-side in other terminal ``` npm run watch ```
+
+Because this apps build with inertia js and React you need install node js in local
