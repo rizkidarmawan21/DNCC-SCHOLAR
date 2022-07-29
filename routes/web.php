@@ -41,7 +41,7 @@ Route::get('/settings/password',function(){
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'admin'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 
 require __DIR__ . '/auth.php';

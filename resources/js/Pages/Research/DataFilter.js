@@ -3,11 +3,11 @@ export const filterMenu = {
     items: [
         {
             title: "Filter 1",
-            url: route('settings'),
+            url: '',
         },
         {
             title: "Filter 2",
-            url: route('settings.password'),
+            url:'',
         },
     ]
 }

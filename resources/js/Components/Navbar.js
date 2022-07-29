@@ -31,7 +31,7 @@ const Navbar = ({ auth }) => {
                             :
                             <>
                                 <li><Link href={route('research')} >Research</Link></li>
-                                <li><Link href="" >Dashboard Creator</Link></li>
+                                <li><Link href={route('dashboard')} >Dashboard Creator</Link></li>
                                 <hr />
                                 <li><Link href={route('settings')} >Settings</Link></li>
                                 <li><Link href={route('logout')} method="post" as='button' >Logout</Link></li>
