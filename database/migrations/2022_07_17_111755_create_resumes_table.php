@@ -21,8 +21,8 @@ class CreateResumesTable extends Migration
             $table->string('category');
             $table->text('excerpt');
             $table->string('description');
+            $table->string('link');
             $table->string('pdf')->nullable();
-            $table->string('link')->nullable();
             $table->boolean('published')->default(false); // if true, then it will be visible to the public
             $table->timestamp('published_at')->nullable();  //tipe data timestamp
             $table->timestamps();
