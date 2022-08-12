@@ -32,7 +32,7 @@ Route::get('/settings', function () {
     ]);
 })->name('settings');
 
-Route::get('/settings/password',function(){
+Route::get('/settings/password', function () {
     return Inertia::render('Settings/Password', [
         'title' => "Password Setting",
     ]);
@@ -40,8 +40,20 @@ Route::get('/settings/password',function(){
 
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard/Dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard/Dashboard');
+    })->name('dashboard');
+    Route::get('/dashboard/post', function () {
+        return Inertia::render('Dashboard/createPost');
+    })->name('dashboard.post');
+    Route::get('/dashboard/users', function () {
+        return Inertia::render('Dashboard/users');
+    })->name('dashboard.users')->middleware('admin');
+});
 
 
 require __DIR__ . '/auth.php';
