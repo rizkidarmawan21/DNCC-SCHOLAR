@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,23 +27,6 @@ Route::get('/research', [ResumeController::class, 'index'])->name('research');
 Route::resource('/research', ResumeController::class)->except('index');
 
 
-Route::get('/settings', function () {
-    return Inertia::render('Settings/Profile', [
-        'title' => "General Setting",
-    ]);
-})->name('settings');
-
-Route::get('/settings/password', function () {
-    return Inertia::render('Settings/Password', [
-        'title' => "Password Setting",
-    ]);
-})->name('settings.password');
-
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard/Dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard/Dashboard');
@@ -53,6 +37,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/users', function () {
         return Inertia::render('Dashboard/users');
     })->name('dashboard.users')->middleware('admin');
+
+    Route::get('/settings', [UserController::class, 'profile'])->name('settings');
+
+    Route::get('/settings/password', [UserController::class, 'password'])->name('settings.password');
+
+    Route::post('/settings/{user}', [UserController::class, 'updateProfile'])->name('settings.profile.update');
+    Route::post('/settings/password/{user}', [UserController::class, 'updatePassword'])->name('settings.password.update');
 });
 
 

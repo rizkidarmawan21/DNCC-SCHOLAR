@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Resume;
 use App\Http\Requests\StoreResumeRequest;
 use App\Http\Requests\UpdateResumeRequest;
+use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
 class ResumeController extends Controller
@@ -21,15 +22,6 @@ class ResumeController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -37,7 +29,7 @@ class ResumeController extends Controller
      * @param  \App\Http\Requests\StoreResumeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreResumeRequest $request)
+    public function store(Request $request)
     {
         //
     }
