@@ -17,18 +17,9 @@ export default function Password(props) {
     const submit = (e) => {
         e.preventDefault();
         post(route('settings.password.update', props.auth.user.id), data);
-        console.log(data)
-        setData({ password_current: "" })
-        setData({ new_password: "" })
-        setData({ repeat_password: "" })
+        reset()
     };
-
-    // useEffect(() => {
-    //     console.log(data)
-    //         setData({ password_current: "" })
-    //         setData({ new_password: "" })
-    //         setData({ repeat_password: "" })
-    // }, [])
+   
     return (
 
         <Setting
@@ -43,7 +34,7 @@ export default function Password(props) {
                     <hr />
                     <div className="m-5">
                         <span className="font-bold">Password Current</span>
-                        <input type="password" placeholder="Password Current" name="password_current" onChange={(e) => onHandleChange(e)} value={data.name} className={`input input-bordered w-full  ${errors.password_current && 'input-error'}`} />
+                        <input type="password" placeholder="Password Current" name="password_current" onChange={(e) => onHandleChange(e)} value={data.password_current} className={`input input-bordered w-full  ${errors.password_current && 'input-error'}`} />
                         {errors.password_current &&
                             <ul className="ml-5 mt-2 list-disc">
                                 <li className="text-red-500">{errors.password_current}</li>

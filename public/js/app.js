@@ -4500,9 +4500,9 @@ function Dashboard(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
     auth: props.auth,
     errors: props.errors,
-    header: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+    header: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
       className: "font-semibold text-xl text-gray-800 leading-tight",
-      children: "Dashboard"
+      children: ["Dashboard ", props.auth.user.is_admin && 'Admin']
     }),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, {
       title: "Dashboard"
@@ -4996,23 +4996,8 @@ function Password(props) {
   var submit = function submit(e) {
     e.preventDefault();
     post(route('settings.password.update', props.auth.user.id), data);
-    console.log(data);
-    setData({
-      password_current: ""
-    });
-    setData({
-      new_password: ""
-    });
-    setData({
-      repeat_password: ""
-    });
-  }; // useEffect(() => {
-  //     console.log(data)
-  //         setData({ password_current: "" })
-  //         setData({ new_password: "" })
-  //         setData({ repeat_password: "" })
-  // }, [])
-
+    reset();
+  };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Layouts_Setting__WEBPACK_IMPORTED_MODULE_1__["default"], {
     auth: props.auth,
@@ -5038,7 +5023,7 @@ function Password(props) {
             onChange: function onChange(e) {
               return onHandleChange(e);
             },
-            value: data.name,
+            value: data.password_current,
             className: "input input-bordered w-full  ".concat(errors.password_current && 'input-error')
           }), errors.password_current && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ul", {
             className: "ml-5 mt-2 list-disc",
