@@ -27,6 +27,8 @@
     },
     "dependencies": {
         "@heroicons/react": "^1.0.6",
-        "daisyui": "^2.19.0"
+        "daisyui": "^2.19.0",
+        "draftjs-to-markdown": "^0.6.0",
+        "react-draft-wysiwyg": "^1.15.0"
     }
 }

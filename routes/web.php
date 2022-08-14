@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/post', function () {
         return Inertia::render('Dashboard/createPost');
     })->name('dashboard.post');
+    Route::post('/dashboard/post',[ResumeController::class,'store'])->middleware('auth')->name('post.resume');
     Route::get('/dashboard/users', function () {
         return Inertia::render('Dashboard/users');
     })->name('dashboard.users')->middleware('admin');

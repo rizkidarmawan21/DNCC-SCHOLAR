@@ -17,7 +17,7 @@ class ResumeController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Research/Research',[
+        return Inertia::render('Research/Research', [
             'title' => 'Research your interests',
         ]);
     }
@@ -31,7 +31,7 @@ class ResumeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 'masuk post resume';
     }
 
     /**
@@ -42,7 +42,7 @@ class ResumeController extends Controller
      */
     public function show(Resume $resume)
     {
-        return Inertia::render('Research/DetailResearch',[
+        return Inertia::render('Research/DetailResearch', [
             'title' => 'JUDUL RESEARCH',
         ]);
     }
