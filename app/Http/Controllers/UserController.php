@@ -20,6 +20,7 @@ class UserController extends Controller
 
     public function updateProfile(Request $request, User $user)
     {
+        dd($request);
         if (Auth::user()->id !== $user->id) {
             return redirect()->back();
         }
@@ -54,5 +55,10 @@ class UserController extends Controller
 
         // return 'masuk lek';
         return redirect()->back()->with('message', 'New Password updated successfully');
+    }
+
+    public function buat(Request $request)
+    {
+        dd($request);
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -26,6 +27,7 @@ Route::get('/', function () {
 Route::get('/research', [ResumeController::class, 'index'])->name('research');
 Route::resource('/research', ResumeController::class)->except('index');
 
+Route::post('buat', [ResumeController::class, 'buat'])->name('buat');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
@@ -34,7 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/post', function () {
         return Inertia::render('Dashboard/createPost');
     })->name('dashboard.post');
-    Route::post('/dashboard/post',[ResumeController::class,'store'])->middleware('auth')->name('post.resume');
+
+
     Route::get('/dashboard/users', function () {
         return Inertia::render('Dashboard/users');
     })->name('dashboard.users')->middleware('admin');

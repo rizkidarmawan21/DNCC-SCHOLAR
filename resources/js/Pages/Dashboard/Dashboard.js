@@ -8,8 +8,8 @@ export default function Dashboard(props) {
         <Authenticated
             auth={props.auth}
             errors={props.errors}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Dashboard {props.auth.user.is_admin && 'Admin'
-            }</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Dashboard {props.auth.user.is_admin ? 'Admin'
+            : 'Member'}</h2>}
         >
             <Head title="Dashboard" />
 

@@ -20,7 +20,7 @@ class CreateResumesTable extends Migration
             $table->string('slug')->unique();
             $table->string('category');
             $table->text('excerpt');
-            $table->string('description');
+            $table->text('description');
             $table->string('link')->nullable();
             $table->string('pdf')->nullable();
             $table->boolean('published')->default(false); // if true, then it will be visible to the public

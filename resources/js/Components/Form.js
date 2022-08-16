@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Form({ title, type, placeholder, name }) {
+export default function Form({ title, type, placeholder, name, value, handleChange }) {
     return (
         <div className="form-control mt-5">
             <label className="label">
@@ -8,7 +8,7 @@ export default function Form({ title, type, placeholder, name }) {
             </label>
             <label className="input-group">
                 {/* <span>{title}</span> */}
-                <input type={type} name={name} placeholder={placeholder} className="input input-bordered w-full" />
+                <input type={type} name={name} placeholder={placeholder} value={value} onChange={ (name) => handleChange(name)} className="input input-bordered w-full" />
             </label>
         </div>
     )

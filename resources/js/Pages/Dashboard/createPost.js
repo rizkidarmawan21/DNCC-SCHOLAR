@@ -1,27 +1,45 @@
-import Form from '@/Components/Form'
 import Authenticated from '@/Layouts/Authenticated'
+import { Inertia } from '@inertiajs/inertia'
 import { Head, useForm } from '@inertiajs/inertia-react'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import Form from '@/Components/Form'
 
 export default function createPost(props) {
-    const { data, setData, post, errors, reset } = useForm({
+    console.log(props)
+    const [published, setPublished] = useState(false)
+    const { data, setData, post, errors, processing, reset } = useForm({
         title: '',
         year: '',
         category: '',
         description: '',
         link: '',
-        pdf: '',
-        published:false
+        pdf: null,
     })
+    const ref = useRef()
+
+    // useEffect(() => { 
+    //     ref.current = 
+    // })
+
+    const handleChangeCheckbox = () => {
+        setPublished(!published)
+    }
 
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
 
+    data.published = published
+
     const submit = (e) => {
         e.preventDefault();
-        // post(route('settings.password.update', props.auth.user.id), data);
-        reset()
+        // const formData = new FormData();
+        // formData.append('pdf', data.pdf);
+        console.log(data)
+
+        post(route('research.store'), data);
+        // reset()
+        // setPublished(false);
     };
 
     return (
@@ -34,26 +52,64 @@ export default function createPost(props) {
             <div className="pt-12 pb-5">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        {errors.resumeFile &&
+                            <div className="m-5">
+                                <div className="alert alert-error shadow-lg text-slate-50">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                        <span>{errors.resumeFile}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                         <div className="p-6 bg-white border-b border-gray-200"> <b>Your Post</b> </div>
-                        <div className="pl-6 pr-6 pb-6 bg-white border-b border-gray-200">
-                            <form onSubmit={submit}>
-                                <Form title="Title" placeholder="Input title" type="text" name="title" />
-                                <Form title="Year" placeholder="Input year" type="number" name="year" />
-                                <Form title="Field of Study" placeholder="Input your study" type="text" name="category" />
+                        <form onSubmit={submit}>
+                            <div className="pl-6 pr-6 pb-6 bg-white border-b border-gray-200">
+                                <Form title="Title" handleChange={onHandleChange} value={data.title} placeholder="Input title" type="text" name="title" />
+                                {errors.title &&
+                                    <ul className="ml-5 mt-2 list-disc">
+                                        <li className="text-red-500">{errors.title}</li>
+                                    </ul>
+                                }
+                                <Form title="Year" placeholder="Input year" type="number" name="year" handleChange={onHandleChange} value={data.year} />
+                                {errors.year &&
+                                    <ul className="ml-5 mt-2 list-disc">
+                                        <li className="text-red-500">{errors.year}</li>
+                                    </ul>
+                                }
+                                <Form title="Field of Study" placeholder="Input your study" type="text" name="category" handleChange={onHandleChange} value={data.category} />
+                                {errors.category &&
+                                    <ul className="ml-5 mt-2 list-disc">
+                                        <li className="text-red-500">{errors.category}</li>
+                                    </ul>
+                                }
                                 <div className="form-control mt-5">
                                     <label className="label">
                                         <span className="label-text text-[1em] font-semibold">Description</span>
                                     </label>
                                     <label className="input-group">
                                         {/* <span>{title}</span> */}
-                                        <textarea name="description" placeholder="Input description" className="input input-bordered w-full h-40"></textarea>
+                                        <textarea name="description" onChange={(e) => onHandleChange(e)} value={data.description} placeholder="Input description" className="input input-bordered w-full h-40" />
                                     </label>
                                 </div>
+                                {errors.description &&
+                                    <ul className="ml-5 mt-2 list-disc">
+                                        <li className="text-red-500">{errors.description}</li>
+                                    </ul>
+                                }
                                 <div className="mt-7 text-yellow-500">
                                     • &nbsp; Choose one of uploaded by link external or with pdf.
                                 </div>
-                                <Form title="Link External" placeholder="Input link resume" type="url" name="link" />
-                                <Form title="File PDF" placeholder="Upload file pdf" type="file" name="pdf" />
+
+                                <Form title="Link External" placeholder="Input link resume" type="url" name="link" handleChange={onHandleChange} value={data.link} />
+                                <div className="form-control mt-5">
+                                    <label className="label">
+                                        <span className="label-text text-[1em] font-semibold">File Pdf</span>
+                                    </label>
+                                    <label className="input-group">
+                                        <input accept='.pdf' type="file" name="pdf" placeholder="Upload file pdf" ref={ref} onChange={e => setData('pdf', e.target.files[0])} className="input input-bordered w-full" />
+                                    </label>
+                                </div>
                                 <div className="mt-7 text-yellow-500">
                                     • &nbsp; Check this box if you want to publish for everyone, by default your posts are only for members.
                                 </div>
@@ -61,13 +117,17 @@ export default function createPost(props) {
                                     <div className="form-control mt-5">
                                         <label className="label cursor-pointer">
                                             <span className="label-text text-[1em] font-semibold">Published in public ?</span>
-                                            <input type="checkbox" name="published" className="checkbox" />
+                                            <input type="checkbox"
+                                                onChange={handleChangeCheckbox}
+                                                name="published"
+                                                checked={published}
+                                                className="checkbox" />
                                         </label>
                                     </div>
                                 </div>
                                 <button className="btn mt-5 w-full text-white btn-sm">Upload</button>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

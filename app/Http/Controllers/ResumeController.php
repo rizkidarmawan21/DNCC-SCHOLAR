@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Resume;
-use App\Http\Requests\StoreResumeRequest;
-use App\Http\Requests\UpdateResumeRequest;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class ResumeController extends Controller
@@ -22,16 +21,52 @@ class ResumeController extends Controller
         ]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreResumeRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        return 'masuk post resume';
+        dd($request);
+        $data  = $request->validate([
+            'title'       => 'required',
+            'category'    => 'required',
+            'description' => 'required',
+            'year'        => 'required',
+            'published'   => 'required',
+        ]);
+
+        $data['user_id'] = auth()->user()->id;
+        $data['slug'] = Str::slug($request->title, '-');
+        $data['excerpt'] = Str::limit(strip_tags($request->description), 80, '...');
+
+        if ($request->link) {
+            $data['link'] = $request->link;
+            $data['pdf'] = null;
+        } elseif ($request->pdf) {
+            $data['link'] = null;
+            $data['pdf'] = $request->pdf;
+        } elseif ($request->link && $request->pdf) {
+            $data['link'] = $request->link;
+            $data['pdf'] = $request->pdf;
+        } elseif ($request->link === null && $request->pdf === null) {
+            return redirect()->back()->withErrors(['resumeFile' => ' Please choose one of uploaded by link external or with pdf !']);
+        }
+
+        Resume::create($data);
+        return redirect()->route('dashboard')->with('message', 'New journal created successfully');
     }
 
     /**
@@ -46,7 +81,6 @@ class ResumeController extends Controller
             'title' => 'JUDUL RESEARCH',
         ]);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -61,11 +95,11 @@ class ResumeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateResumeRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Resume  $resume
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateResumeRequest $request, Resume $resume)
+    public function update(Request $request, Resume $resume)
     {
         //
     }
