@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Resume;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 
@@ -39,7 +40,7 @@ class ResumeController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         $data  = $request->validate([
             'title'       => 'required',
             'category'    => 'required',
@@ -47,28 +48,33 @@ class ResumeController extends Controller
             'year'        => 'required',
             'published'   => 'required',
         ]);
+        
 
         $data['user_id'] = auth()->user()->id;
-        $data['slug'] = Str::slug($request->title, '-');
-        $data['excerpt'] = Str::limit(strip_tags($request->description), 80, '...');
+        $data['slug'] = Str::slug($request->title.'-'.Str::random(10), '-');
+        $data['excerpt'] = Str::limit(strip_tags($request->description), 200, '...');
 
         if ($request->link) {
             $data['link'] = $request->link;
             $data['pdf'] = null;
         } elseif ($request->pdf) {
             $data['link'] = null;
-            $data['pdf'] = $request->pdf;
+            $path = $request->file('pdf')->store('post-pdf');
+            $data['pdf'] = Storage::url($path);
         } elseif ($request->link && $request->pdf) {
             $data['link'] = $request->link;
-            $data['pdf'] = $request->pdf;
+            $path = $request->file('pdf')->store('post-pdf');
+            $data['pdf'] = Storage::url($path);
         } elseif ($request->link === null && $request->pdf === null) {
             return redirect()->back()->withErrors(['resumeFile' => ' Please choose one of uploaded by link external or with pdf !']);
         }
+
 
         Resume::create($data);
         return redirect()->route('dashboard')->with('message', 'New journal created successfully');
     }
 
+    
     /**
      * Display the specified resource.
      *

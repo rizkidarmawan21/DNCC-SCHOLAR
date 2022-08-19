@@ -5,7 +5,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import Form from '@/Components/Form'
 
 export default function createPost(props) {
-    console.log(props)
     const [published, setPublished] = useState(false)
     const { data, setData, post, errors, processing, reset } = useForm({
         title: '',
@@ -35,11 +34,10 @@ export default function createPost(props) {
         e.preventDefault();
         // const formData = new FormData();
         // formData.append('pdf', data.pdf);
-        console.log(data)
 
         post(route('research.store'), data);
-        // reset()
-        // setPublished(false);
+        reset()
+        setPublished(false);
     };
 
     return (

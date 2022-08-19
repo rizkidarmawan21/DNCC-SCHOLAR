@@ -4494,127 +4494,116 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _Components_Research_CardResearch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/Research/CardResearch */ "./resources/js/Components/Research/CardResearch.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
 
 function Dashboard(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  var flashMessage = props.flash.message ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    className: "m-5",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "alert alert-success shadow-lg text-slate-50",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("svg", {
+          xmlns: "http://www.w3.org/2000/svg",
+          className: "stroke-current flex-shrink-0 h-6 w-6",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("path", {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: "2",
+            d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          children: props.flash.message
+        })]
+      })
+    })
+  }) : null;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!props.data) {
+      Inertia.get('/dashboard');
+    }
+
+    return;
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
     auth: props.auth,
     errors: props.errors,
-    header: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h2", {
+    header: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("h2", {
       className: "font-semibold text-xl text-gray-800 leading-tight",
       children: ["Dashboard ", props.auth.user.is_admin ? 'Admin' : 'Member']
     }),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, {
       title: "Dashboard"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "pt-12 pb-5",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "max-w-7xl mx-auto sm:px-6 lg:px-8",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: [flashMessage, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "bg-white overflow-hidden shadow-sm sm:rounded-lg",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "p-6 bg-white border-b border-gray-200",
-            children: props.auth.user.is_admin ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+            children: props.auth.user.is_admin ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
               children: "Resume All"
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
               children: "My Resume"
             })
           })
-        })
+        })]
       })
-    }), props.auth.user.is_admin ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "pb-12",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "max-w-7xl mb-4 mx-auto sm:px-6 lg:px-8",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "bg-white overflow-hidden shadow-sm sm:rounded-lg",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "p-6 bg-white border-b border-gray-200",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "w-full",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
-                  href: route('research.show', 1),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-                    className: "card-title text-sky-700 hover:text-sky-900",
-                    children: "Perancangan sistem aplikasi pembangunan rumah dengan arduino"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-                  className: "text-slate-400 text-sm my-3",
-                  children: "Rizki Darmawan - Techlonogy - 21-04-2002"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-                  children: ["Pengadaan Barang merupakan suatu kegiatan pendistribusian barang yang digunakan untuk mendapatkan suatu barang atau jasa. Dalam suatu perusahaan, pengadaan barang merupakan kegiatan yang penting\u2026 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
-                    className: "text-sky-700",
-                    children: "Expand"
+    }), props.data.length != 0 ? props.data.map(function (research, i) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "pb-5",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "max-w-7xl mb-4 mx-auto sm:px-6 lg:px-8",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "bg-white overflow-hidden shadow-sm sm:rounded-lg",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: "p-6 bg-white border-b border-gray-200",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                className: "w-full",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
+                    href: route('research.show', 1),
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("h2", {
+                      className: "card-title text-sky-700 hover:text-sky-900",
+                      children: [research.title, " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                        className: "badge ".concat(research.published ? "badge-primary" : ""),
+                        children: research.published ? 'Public' : 'Members'
+                      })]
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+                    className: "text-slate-400 text-sm my-3",
+                    children: [research.author.name, " - ", research.category, " - ", research.year]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+                    children: [research.excerpt, " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
+                      className: "text-sky-700",
+                      children: "Expand"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                    className: "card-actions justify-end",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                      className: "btn text-white btn-sm btn-warning",
+                      children: "Edit"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                      className: "btn text-white btn-sm btn-info",
+                      children: "Detail"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                      className: "btn text-white btn-sm btn-error",
+                      children: "Delete"
+                    })]
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "card-actions justify-end",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                    className: "btn text-white btn-sm btn-warning",
-                    children: "Edit"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                    className: "btn text-white btn-sm btn-info",
-                    children: "Detail"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                    className: "btn text-white btn-sm btn-error",
-                    children: "Delete"
-                  })]
-                })]
+                })
               })
             })
           })
-        })
-      })
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "pb-12",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "max-w-7xl mb-4 mx-auto sm:px-6 lg:px-8",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "bg-white overflow-hidden shadow-sm sm:rounded-lg",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "p-6 bg-white border-b border-gray-200",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "w-full",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
-                  href: route('research.show', 1),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-                    className: "card-title text-sky-700 hover:text-sky-900",
-                    children: "Perancangan sistem aplikasi pembangunan rumah dengan arduino"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-                  className: "text-slate-400 text-sm my-3",
-                  children: "Rizki Darmawan - Techlonogy - 21-04-2002"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-                  children: ["Pengadaan Barang merupakan suatu kegiatan pendistribusian barang yang digunakan untuk mendapatkan suatu barang atau jasa. Dalam suatu perusahaan, pengadaan barang merupakan kegiatan yang penting\u2026 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
-                    className: "text-sky-700",
-                    children: "Expand"
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "card-actions justify-end",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                    className: "btn text-white btn-sm btn-warning",
-                    children: "Edit"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                    className: "btn text-white btn-sm btn-info",
-                    children: "Detail"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                    className: "btn text-white btn-sm btn-error",
-                    children: "Delete"
-                  })]
-                })]
-              })
-            })
-          })
-        })
-      })
-    })]
+        }, i)
+      });
+    }) : null]
   });
 }
 
@@ -4657,8 +4646,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function createPost(props) {
-  console.log(props);
-
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       published = _useState2[0],
@@ -4697,9 +4684,9 @@ function createPost(props) {
     e.preventDefault(); // const formData = new FormData();
     // formData.append('pdf', data.pdf);
 
-    console.log(data);
-    post(route('research.store'), data); // reset()
-    // setPublished(false);
+    post(route('research.store'), data);
+    reset();
+    setPublished(false);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_0__["default"], {
@@ -5296,12 +5283,12 @@ function Profile(props) {
     post(route('settings.profile.update', user.id), data); // post(route('buat'), data);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_Layouts_Setting__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Layouts_Setting__WEBPACK_IMPORTED_MODULE_1__["default"], {
     auth: props.auth,
     header: props.title,
     url: props.ziggy.url,
     flash: props.flash,
-    children: [console.log(data), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
       onSubmit: submit,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "p-3",
@@ -5381,7 +5368,7 @@ function Profile(props) {
           })
         })]
       })
-    })]
+    })
   });
 }
 

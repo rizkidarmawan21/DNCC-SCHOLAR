@@ -28,7 +28,6 @@ export default function Profile(props) {
             url={props.ziggy.url}
             flash={props.flash}
         >
-            {console.log(data)}
             <form onSubmit={submit}>
                 <div className="p-3">
                     <h1 className="ml-5 text-2xl font-bold pb-3">Profile</h1>

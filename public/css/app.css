@@ -3385,6 +3385,18 @@ body[dir="rtl"] .checkbox:checked,
   right: 7%;
   box-shadow: 0 0 0 2px hsl(var(--b1));
 }
+.badge-primary {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--p) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+.badge-outline.badge-primary {
+  --tw-text-opacity: 1;
+  color: hsl(var(--p) / var(--tw-text-opacity));
+}
 .card-compact .card-title {
   margin-bottom: 0.25rem;
 }
@@ -4042,6 +4054,9 @@ body[dir="rtl"] .checkbox:checked,
 }
 .pt-10 {
   padding-top: 2.5rem;
+}
+.pb-10 {
+  padding-bottom: 2.5rem;
 }
 .text-left {
   text-align: left;

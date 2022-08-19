@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
@@ -30,9 +31,7 @@ Route::resource('/research', ResumeController::class)->except('index');
 Route::post('buat', [ResumeController::class, 'buat'])->name('buat');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard/Dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::get('/dashboard/post', function () {
         return Inertia::render('Dashboard/createPost');
     })->name('dashboard.post');
