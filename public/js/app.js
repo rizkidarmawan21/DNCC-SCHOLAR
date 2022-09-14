@@ -2895,40 +2895,47 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var CardResearch = function CardResearch() {
+var CardResearch = function CardResearch(_ref) {
+  var key = _ref.key,
+      research = _ref.research;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "w-full mb-10",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
-        href: route('research.show', 1),
+        href: route('research.show', research.id),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
           className: "card-title text-sky-700 hover:text-sky-900",
-          children: "Perancangan sistem aplikasi pembangunan rumah dengan arduino"
+          children: research.title
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-        className: "text-slate-400 text-sm my-3",
-        children: "Rizki Darmawan - Techlonogy - 21-04-2002"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
-        children: ["Pengadaan Barang merupakan suatu kegiatan pendistribusian barang yang digunakan untuk mendapatkan suatu barang atau jasa. Dalam suatu perusahaan, pengadaan barang merupakan kegiatan yang penting\u2026 ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
+        className: "text-slate-400 text-sm my-3",
+        children: [research.author.name, " - ", research.category, " - ", research.year]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
+        children: [" ", research.excerpt, " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
+          href: route('research.show', research.id),
           className: "text-sky-700",
           children: "Expand"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "mt-4 flex",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
+        children: [research.pdf ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+          target: "_blank",
+          rel: "noopener noreferrer",
+          href: research.pdf,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
             src: "/assets/pdf.svg"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-          className: "ml-5",
-          src: "/assets/eye.svg"
-        }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-          className: "text-sm text-[#B85900] ml-1",
-          children: "1.2 View"
-        })]
+        }) : null, research.link ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+          target: "_blank",
+          rel: "noopener noreferrer",
+          href: research.link,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+            src: "/assets/link.svg"
+          })
+        }) : null]
       })]
     })
-  });
+  }, key);
 };
 
 /***/ }),
@@ -2970,7 +2977,7 @@ var FilterMenu = function FilterMenu() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "bg-base-100",
+        className: "bg-base-100 rounded-md",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
           className: "menu menu-compact hidden lg:flex",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
@@ -2982,7 +2989,7 @@ var FilterMenu = function FilterMenu() {
         })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "lg:hidden col-span-5",
+      className: "lg:hidden col-span-5 overflow-x-auto bg-white no-scrollbar rounded-md",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
         className: "menu menu-compact menu-horizontal ",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
@@ -4568,7 +4575,7 @@ function Dashboard(props) {
                 className: "w-full",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
-                    href: route('research.show', 1),
+                    href: route('research.show', research.id),
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("h2", {
                       className: "card-title text-sky-700 hover:text-sky-900",
                       children: [research.title, " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -4646,6 +4653,26 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function createPost(props) {
+  var categoris = [{
+    category: 'Technology'
+  }, {
+    category: 'Information Engineering'
+  }, {
+    category: 'Information System'
+  }, {
+    category: 'Graphic Design'
+  }, {
+    category: 'Art'
+  }, {
+    category: 'Business'
+  }, {
+    category: 'Computer Science'
+  }, {
+    category: 'Economics'
+  }, {
+    category: 'Medicine'
+  }];
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       published = _useState2[0],
@@ -4684,9 +4711,8 @@ function createPost(props) {
     e.preventDefault(); // const formData = new FormData();
     // formData.append('pdf', data.pdf);
 
-    post(route('research.store'), data);
-    reset();
-    setPublished(false);
+    post(route('research.store'), data); // reset()
+    // setPublished(false);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_0__["default"], {
@@ -4760,13 +4786,36 @@ function createPost(props) {
                   className: "text-red-500",
                   children: errors.year
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Components_Form__WEBPACK_IMPORTED_MODULE_4__["default"], {
-                title: "Field of Study",
-                placeholder: "Input your study",
-                type: "text",
-                name: "category",
-                handleChange: onHandleChange,
-                value: data.category
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "form-control mt-5",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  className: "label",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+                    className: "label-text text-[1em] font-semibold",
+                    children: "Field of Study"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+                  className: "input-group",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+                    className: "select select-bordered w-full",
+                    name: "category",
+                    onChange: function onChange(e) {
+                      return onHandleChange(e);
+                    },
+                    value: data.category,
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                      value: "",
+                      disabled: true,
+                      selected: true,
+                      children: "[ Select Field of study ]"
+                    }), categoris.map(function (item, index) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                        value: item.category,
+                        children: item.category
+                      }, index);
+                    })]
+                  })
+                })]
               }), errors.category && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
                 className: "ml-5 mt-2 list-disc",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
@@ -4916,10 +4965,31 @@ __webpack_require__.r(__webpack_exports__);
 var filterMenu = {
   title: "Filter",
   items: [{
-    title: "Filter 1",
+    title: "Technology",
     url: ''
   }, {
-    title: "Filter 2",
+    title: "Information Engineering",
+    url: ''
+  }, {
+    title: "Information System",
+    url: ''
+  }, {
+    title: "Graphic Design",
+    url: ''
+  }, {
+    title: "Art",
+    url: ''
+  }, {
+    title: "Business",
+    url: ''
+  }, {
+    title: "Computer Science",
+    url: ''
+  }, {
+    title: "Economics",
+    url: ''
+  }, {
+    title: "Medicine",
     url: ''
   }]
 };
@@ -4949,6 +5019,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function DetailResearch(props) {
+  console.log(props);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "relative container w-full min-h-screen px-10 mx-auto",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, {
@@ -4967,7 +5038,7 @@ function DetailResearch(props) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
           children: "Detail"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
-          children: "perancangan-data-sinis"
+          children: props.research.slug
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -4980,17 +5051,17 @@ function DetailResearch(props) {
             className: " mb-2 ",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
               className: "font-bold text-3xl text-slate-700",
-              children: "Perancangan sistem aplikasi pembangunan rumah dengan arduino"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+              children: props.research.title
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
               className: "py-3 text-slate-400",
-              children: "Published 21-03-2019 - Technology"
+              children: ["Published ", props.research.year, " - ", props.research.category]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
             className: "py-2 font-bold text-xl",
             children: "Abstrak"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
             className: "text-md text-slate-600",
-            children: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse auctor faucibus lacus, in lacinia enim. Aenean in lacus vulputate, efficitur massa quis, mattis ante. Donec eu turpis enim. Nullam eget venenatis odio. Quisque consectetur nulla et odio vulputate, eu viverra nibh aliquet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas semper vel sem et bibendum. Proin et blandit urna, quis blandit diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum sodales pharetra semper. Quisque placerat ornare quam. Maecenas vehicula tincidunt ex, vel suscipit ex viverra non. Fusce sodales mauris eget luctus dapibus. In euismod nisi eu sem volutpat, vitae tristique diam cursus.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), "Etiam iaculis magna cursus sem faucibus egestas. Fusce vel laoreet ipsum. Phasellus cursus leo nisi, dignissim finibus nisi laoreet eu. Pellentesque nisl nulla, laoreet vehicula nunc at, rhoncus hendrerit magna. Cras nec leo maximus, viverra felis in, cursus tellus. Nulla ut magna lacinia, lobortis dui sit amet, rhoncus enim. Donec nibh nibh, blandit eget tortor ornare, accumsan egestas lorem. Curabitur vel vestibulum mi. Integer non elementum libero."]
+            children: props.research.description
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -4999,29 +5070,33 @@ function DetailResearch(props) {
           className: "px-6 py-4",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "font-bold text-xl mb-2 text-slate-700",
-            children: ["By Rizki Darmawan  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            children: ["By ", props.research.author.name, "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
               className: "badge badge-sm p-2",
-              children: "DNCC 2020"
+              children: ["DNCC ", props.research.author.dncc_year]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
             className: "text-md text-slate-600",
-            children: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet, nam."
+            children: ["Merupakan anggota UKM DNCC (Dian Nuswantoro Computer Club) angkatan ", props.research.author.dncc_year]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "mt-4 flex md:block lg:flex",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            children: [props.research.pdf ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+                target: "_blank",
+                href: props.research.pdf,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
                   src: "/assets/pdf.svg"
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
+            }) : null, props.research.link ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+                href: props.research.link,
+                target: "_blank",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
                   className: "mt-0 sm:mt-0 md:mt-3 lg:mt-0",
                   src: "/assets/link.svg"
                 })
               })
-            })]
+            }) : null]
           })]
         })
       })]
@@ -5042,13 +5117,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Research)
 /* harmony export */ });
-/* harmony import */ var _Components_Homepage_Footer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Components/Homepage/Footer */ "./resources/js/Components/Homepage/Footer.js");
-/* harmony import */ var _Components_Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Components/Navbar */ "./resources/js/Components/Navbar.js");
-/* harmony import */ var _Components_Research_CardResearch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/Research/CardResearch */ "./resources/js/Components/Research/CardResearch.js");
-/* harmony import */ var _Components_Research_FilterMenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/Research/FilterMenu */ "./resources/js/Components/Research/FilterMenu.js");
-/* harmony import */ var _Components_Research_FooterResearch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/Research/FooterResearch */ "./resources/js/Components/Research/FooterResearch.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Components_Homepage_Footer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Components/Homepage/Footer */ "./resources/js/Components/Homepage/Footer.js");
+/* harmony import */ var _Components_Navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/Navbar */ "./resources/js/Components/Navbar.js");
+/* harmony import */ var _Components_Research_CardResearch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/Research/CardResearch */ "./resources/js/Components/Research/CardResearch.js");
+/* harmony import */ var _Components_Research_FilterMenu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/Research/FilterMenu */ "./resources/js/Components/Research/FilterMenu.js");
+/* harmony import */ var _Components_Research_FooterResearch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Research/FooterResearch */ "./resources/js/Components/Research/FooterResearch.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -5064,19 +5139,28 @@ function Research(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "relative container w-full min-h-screen px-10 mx-auto",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Head, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_6__.Head, {
         title: props.title
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
         auth: props.auth,
         url: props.ziggy.url
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-        className: "grid grid-cols-5 gap-6 pt-14 pb-36 ",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Research_FilterMenu__WEBPACK_IMPORTED_MODULE_3__.FilterMenu, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        className: "grid grid-cols-5 gap-6 lg:pt-14 pb-36 ",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Research_FilterMenu__WEBPACK_IMPORTED_MODULE_4__.FilterMenu, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "col-span-5 lg:col-span-4",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Research_CardResearch__WEBPACK_IMPORTED_MODULE_2__.CardResearch, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Research_CardResearch__WEBPACK_IMPORTED_MODULE_2__.CardResearch, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Research_CardResearch__WEBPACK_IMPORTED_MODULE_2__.CardResearch, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Research_CardResearch__WEBPACK_IMPORTED_MODULE_2__.CardResearch, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Research_CardResearch__WEBPACK_IMPORTED_MODULE_2__.CardResearch, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Research_CardResearch__WEBPACK_IMPORTED_MODULE_2__.CardResearch, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Research_CardResearch__WEBPACK_IMPORTED_MODULE_2__.CardResearch, {})]
+          children: props.resumes ? props.resumes.map(function (research, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Research_CardResearch__WEBPACK_IMPORTED_MODULE_3__.CardResearch, {
+              research: research
+            }, index);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            className: "grid content-center text-center w-full min-h-[200px] rounded-md bg-white",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+              children: "Data is null"
+            })
+          })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Research_FooterResearch__WEBPACK_IMPORTED_MODULE_4__.FooterResearch, {})]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Homepage_Footer__WEBPACK_IMPORTED_MODULE_0__.Footer, {}) && false]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Research_FooterResearch__WEBPACK_IMPORTED_MODULE_5__.FooterResearch, {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Homepage_Footer__WEBPACK_IMPORTED_MODULE_1__.Footer, {}) && false]
   });
 }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Resume;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
@@ -16,9 +17,15 @@ class ResumeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   $resume = Resume::with(['author'])->orderBy('created_at', 'desc');
+        if(Auth::check()) { 
+            $resume->get();
+        }else{
+            $resume->where('published', 0);
+        }
         return Inertia::render('Research/Research', [
             'title' => 'Research your interests',
+            'resumes' => $resume->get(),
         ]);
     }
 
@@ -54,10 +61,10 @@ class ResumeController extends Controller
         $data['slug'] = Str::slug($request->title.'-'.Str::random(10), '-');
         $data['excerpt'] = Str::limit(strip_tags($request->description), 200, '...');
 
-        if ($request->link) {
+        if ($request->link && $request->pdf === null) {
             $data['link'] = $request->link;
             $data['pdf'] = null;
-        } elseif ($request->pdf) {
+        } elseif ($request->pdf && $request->link === null) {
             $data['link'] = null;
             $path = $request->file('pdf')->store('post-pdf');
             $data['pdf'] = Storage::url($path);
@@ -81,10 +88,11 @@ class ResumeController extends Controller
      * @param  \App\Models\Resume  $resume
      * @return \Illuminate\Http\Response
      */
-    public function show(Resume $resume)
+    public function show(Resume $research)
     {
         return Inertia::render('Research/DetailResearch', [
-            'title' => 'JUDUL RESEARCH',
+            'title'  => 'Research | '. $research->title,
+            'research' => $research->load('author')
         ]);
     }
     /**

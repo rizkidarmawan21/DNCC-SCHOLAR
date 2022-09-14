@@ -28,7 +28,7 @@ Route::get('/', function () {
 Route::get('/research', [ResumeController::class, 'index'])->name('research');
 Route::resource('/research', ResumeController::class)->except('index');
 
-Route::post('buat', [ResumeController::class, 'buat'])->name('buat');
+// Route::post('buat', [ResumeController::class, 'buat'])->name('buat');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');

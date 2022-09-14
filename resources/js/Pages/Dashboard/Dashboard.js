@@ -53,7 +53,7 @@ export default function Dashboard(props) {
                                 <div className="p-6 bg-white border-b border-gray-200">
                                     <div className="w-full">
                                         <div>
-                                            <Link href={route('research.show', 1)}>
+                                            <Link href={route('research.show', research.id)}>
                                                 <h2 className="card-title text-sky-700 hover:text-sky-900">{research.title} <div className={`badge ${research.published ? "badge-primary" : ""}`}>{ research.published ? 'Public' : 'Members'}</div></h2>
                                             </Link>
                                             <p className="text-slate-400 text-sm my-3">{research.author.name} - {research.category} - {research.year}</p>

@@ -5,6 +5,18 @@ import React, { useEffect, useRef, useState } from 'react'
 import Form from '@/Components/Form'
 
 export default function createPost(props) {
+    const categoris = [
+        { category: 'Technology' },
+        { category: 'Information Engineering' },
+        { category: 'Information System' },
+        { category: 'Graphic Design' },
+        { category: 'Art' },
+        { category: 'Business' },
+        { category: 'Computer Science' },
+        { category: 'Economics' },
+        { category: 'Medicine' },
+    ]
+
     const [published, setPublished] = useState(false)
     const { data, setData, post, errors, processing, reset } = useForm({
         title: '',
@@ -36,8 +48,8 @@ export default function createPost(props) {
         // formData.append('pdf', data.pdf);
 
         post(route('research.store'), data);
-        reset()
-        setPublished(false);
+        // reset()
+        // setPublished(false);
     };
 
     return (
@@ -75,7 +87,26 @@ export default function createPost(props) {
                                         <li className="text-red-500">{errors.year}</li>
                                     </ul>
                                 }
-                                <Form title="Field of Study" placeholder="Input your study" type="text" name="category" handleChange={onHandleChange} value={data.category} />
+
+                                <div className="form-control mt-5">
+                                    <label className="label">
+                                        <span className="label-text text-[1em] font-semibold">Field of Study</span>
+                                    </label>
+                                    <label className="input-group">
+                                        {/* <span>{title}</span> */}
+
+                                        <select className="select select-bordered w-full" name="category" onChange={(e) => onHandleChange(e)} value={data.category}>
+                                            <option value="" disabled selected>[ Select Field of study ]</option>
+                                            {
+                                                categoris.map((item, index) => {
+                                                    return (
+                                                        <option key={index} value={item.category}>{item.category}</option>
+                                                    )
+                                                })
+                                            }
+                                        </select>
+                                    </label>
+                                </div>
                                 {errors.category &&
                                     <ul className="ml-5 mt-2 list-disc">
                                         <li className="text-red-500">{errors.category}</li>

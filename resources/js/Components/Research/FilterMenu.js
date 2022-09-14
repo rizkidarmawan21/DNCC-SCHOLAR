@@ -15,7 +15,7 @@ export const FilterMenu = () => {
     return (
         <>
             <div className="">
-                <div className="bg-base-100">
+                <div className="bg-base-100 rounded-md">
                     <ul className="menu menu-compact hidden lg:flex">
                         <li className="menu-title mt-3">
                             <span> {filterMenu.title} </span>
@@ -24,7 +24,7 @@ export const FilterMenu = () => {
                     </ul>
                 </div>
             </div>
-            <div className="lg:hidden col-span-5">
+            <div className="lg:hidden col-span-5 overflow-x-auto bg-white no-scrollbar rounded-md">
                 <ul className="menu menu-compact menu-horizontal ">
                     <li className="bg-slate-100"><a>Filter</a></li>
                     {ListFilter(filterMenu.items)}

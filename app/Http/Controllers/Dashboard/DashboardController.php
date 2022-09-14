@@ -12,9 +12,9 @@ class DashboardController extends Controller
 {
     public function index() {
         if(Auth::user()->is_admin){
-            $data = Resume::with(['author'])->get();
+            $data = Resume::with(['author'])->orderBy('created_at','desc')->get();
         }else {
-            $data = Resume::with(['author'])->where('user_id', Auth::user()->id)->get();
+            $data = Resume::with(['author'])->where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
         }
         return Inertia::render('Dashboard/Dashboard',compact('data'));    
     }
